@@ -40,3 +40,36 @@ stages:
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)'
               artifactName: test
+      - deployment: 'Deploy'
+        displayName: 'Deploy'
+        environment: 'Default'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadBuildArtifacts@0
+                  inputs:
+                    buildType: 'current'
+                    artifactName: test
+                    downloadPath: '$(System.ArtifactsDirectory)'
+                - task: IISWebAppManagementOnMachineGroup@0
+                  inputs:
+                    EnableIIS: true
+                    IISDeploymentType: 'IISWebsite'
+                    ActionIISWebsite: 'CreateOrUpdateWebsite'
+                    WebsiteName: 'DevOpsAndGithubIntegration'
+                    WebsitePhysicalPath: '%SystemDrive%\temp\DevOpsAndGithubIntegration'
+                    WebsitePhysicalPathAuth: 'WebsiteWindowsAuth'
+                    WebsiteAuthUserName: '$(iisUser)'
+                    WebsiteAuthUserPassword: '$(iisPassword)'
+                    AddBinding: true
+                    Bindings: '{"bindings":[{"protocol":"http","ipAddress":"All Unassigned","port":"7001","hostname":"","sslThumbprint":"","sniFlag":false}]}'
+                    CreateOrUpdateAppPoolForWebsite: true
+                    AppPoolNameForWebsite: 'DevOpsAndGithubIntegration'
+                    DotNetVersionForWebsite: 'No Managed Code'
+                    PipeLineModeForWebsite: 'Integrated'
+                    AppPoolIdentityForWebsite: 'SpecificUser'
+                    AppPoolUsernameForWebsite: '$(iisUser)'
+                    AppPoolPasswordForWebsite: '$(iisPassword)'
+                
+                    
