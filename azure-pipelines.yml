@@ -75,5 +75,5 @@ stages:
                   inputs:
                     WebSiteName: 'DevOpsAndGithubIntegration'
                     VirtualApplication: '\'
-                    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
+                    Package: '$(System.ArtifactsDirectory)\**\*.zip'
                     
