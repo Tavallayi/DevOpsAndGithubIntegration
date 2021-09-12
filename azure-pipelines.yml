@@ -71,5 +71,9 @@ stages:
                     AppPoolIdentityForWebsite: 'SpecificUser'
                     AppPoolUsernameForWebsite: '$(iisUser)'
                     AppPoolPasswordForWebsite: '$(iisPassword)'
-                
+                - task: IISWebAppDeploymentOnMachineGroup@0
+                  inputs:
+                    WebSiteName: 'DevOpsAndGithubIntegration'
+                    VirtualApplication: '\'
+                    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
                     
