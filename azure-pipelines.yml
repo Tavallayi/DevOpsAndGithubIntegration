@@ -81,8 +81,8 @@ stages:
                     EnableIIS: true
                     IISDeploymentType: 'IISWebApplication'
                     ParentWebsiteNameForApplication: 'DevOpsAndGithubIntegration'
-                    VirtualPathForApplication: '/$(Build.SourceBranchName)'
-                    PhysicalPathForApplication: '%SystemDrive%\temp\DevOpsAndGithubIntegration\$(Build.SourceBranchName)'
+                    VirtualPathForApplication: '/test/$(Build.SourceBranchName)'
+                    PhysicalPathForApplication: '%SystemDrive%\temp\DevOpsAndGithubIntegration\test/$(Build.SourceBranchName)'
                     ApplicationPhysicalPathAuth: 'ApplicationWindowsAuth'
                     ApplicationAuthUserName: '$(iisUser)'
                     ApplicationAuthUserPassword: '$(iisPassword)'
