@@ -76,9 +76,26 @@ stages:
                     AppPoolIdentityForWebsite: 'SpecificUser'
                     AppPoolUsernameForWebsite: '$(iisUser)'
                     AppPoolPasswordForWebsite: '$(iisPassword)'
+                - task: IISWebAppManagementOnMachineGroup@0
+                  inputs:
+                    EnableIIS: true
+                    IISDeploymentType: 'IISWebApplication'
+                    ParentWebsiteNameForApplication: 'DevOpsAndGithubIntegration'
+                    VirtualPathForApplication: '/$(Build.SourceBranchName)'
+                    PhysicalPathForApplication: '%SystemDrive%\temp\DevOpsAndGithubIntegration\$(Build.SourceBranchName)'
+                    ApplicationPhysicalPathAuth: 'ApplicationWindowsAuth'
+                    ApplicationAuthUserName: '$(iisUser)'
+                    ApplicationAuthUserPassword: '$(iisPassword)'
+                    CreateOrUpdateAppPoolForApplication: true
+                    AppPoolNameForApplication: 'DevOpsAndGithubIntegration_$(Build.SourceBranchName)'
+                    DotNetVersionForApplication: 'No Managed Code'
+                    PipeLineModeForApplication: 'Integrated'
+                    AppPoolIdentityForApplication: 'SpecificUser'
+                    AppPoolUsernameForApplication: '$(iisUser)'
+                    AppPoolPasswordForApplication: '$(iisPassword)'
                 - task: IISWebAppDeploymentOnMachineGroup@0
                   inputs:
                     WebSiteName: 'DevOpsAndGithubIntegration'
-                    VirtualApplication: '\'
+                    VirtualApplication: '\$(Build.SourceBranchName)'
                     Package: '$(System.ArtifactsDirectory)\**\*.zip'
                     
