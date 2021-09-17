@@ -14,11 +14,10 @@ stages:
         pool: 
           name: Default
         steps:
-          - task: ShellScript@2
-            displayName: "Show current branch"
+          - task: CmdLine@2
             inputs:
-              scriptPath: 'echo'
-              args: '$(Build.SourceBranch)'
+              script: |
+                echo $(Build.SourceBranch)
           - task: DotNetCoreCLI@2
             displayName: 'Restore the project'
             inputs:
