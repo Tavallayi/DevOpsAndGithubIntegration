@@ -20,6 +20,7 @@ stages:
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
                 echo ${{ variables.Build.SourceBranchName }}
+                echo End
           - task: DotNetCoreCLI@2
             displayName: 'Restore the project'
             inputs:
