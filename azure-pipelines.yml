@@ -19,7 +19,7 @@ stages:
               script: |
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
-                echo ${{ variables.Build.SourceBranchName }}
+                echo ${{ variables['Build.SourceBranch'] }}
                 echo End
           - task: DotNetCoreCLI@2
             displayName: 'Restore the project'
