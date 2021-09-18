@@ -13,7 +13,19 @@ stages:
       - job: 'Build'
         pool: 
           name: Default
+        variables:
+          branchNameToTileCase: ''
         steps:
+          - task: PowerShell@2
+            inputs:
+              script: |
+                (Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''
+          - task: PowerShell@2
+            inputs:
+              script: |
+                (Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''
+          - bash: echo '##vso[task.setvariable variable=a]20'
+          - bash: echo "##vso[task.setvariable variable=branchNameToTileCase](Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''"
           - task: CmdLine@2
             inputs:
               script: |
