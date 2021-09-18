@@ -25,7 +25,7 @@ stages:
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
                 echo ${{ replace(variables['Build.SourceBranch'], '/', '_') }}
-                echo aaa${{ variables.branchNameToTileCase }}
+                echo aaa${{ variables.branchNameToTileCase }}${{ variables.a }}
                 echo End
           - task: DotNetCoreCLI@2
             displayName: 'Restore the project'
