@@ -19,9 +19,12 @@ stages:
           - powershell: (Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''
           - powershell: echo '##vso[task.setvariable variable=branchNameToTileCase]20'
           - powershell: echo "##vso[task.setvariable variable=branchNameToTileCase](Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''"
+          - bash: echo '##vso[task.setvariable variable=one]secondValue'
+            displayName: Set new variable value
           - task: CmdLine@2
             inputs:
               script: |
+                echo $(variables.one)
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
                 echo ${{ replace(variables['Build.SourceBranch'], '/', '_') }}
