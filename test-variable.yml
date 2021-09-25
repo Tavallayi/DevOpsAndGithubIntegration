@@ -11,14 +11,19 @@ stages:
         variables:
         - name: one
           value: initialValue 
+          branchNameToTileCase: 'wwwww'
         steps:
           - script: |
               echo ${{ variables.one }} # outputs initialValue
               echo $(one)
+              echo ${{ variables.branchNameToTileCase }} # outputs initialValue
+              echo $(branchNameToTileCase)
             displayName: First variable pass
           - powershell: Write-Host '##vso[task.setvariable variable=one]secondValue'
             displayName: Set new variable value
           - script: |
               echo ${{ variables.one }} # outputs initialValue
               echo $(one) # outputs secondValue
+              echo ${{ variables.branchNameToTileCase }} # outputs initialValue
+              echo $(branchNameToTileCase) # outputs secondValue
             displayName: Second variable pass
