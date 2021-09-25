@@ -24,13 +24,13 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                echo $(variables.one)
+                echo $(one)
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
                 echo ${{ replace(variables['Build.SourceBranch'], '/', '_') }}
                 echo nnn${{ variables.testvar }}nnn
                 echo aaa${{ variables.branchNameToTileCase }}111
-                echo aaa$( variables.branchNameToTileCase )111
+                echo aaa$( branchNameToTileCase )111
                 echo End
           - task: DotNetCoreCLI@2
             displayName: 'Restore the project'
