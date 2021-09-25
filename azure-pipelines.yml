@@ -28,6 +28,7 @@ stages:
                 echo $(Build.SourceBranch)
                 echo $(Build.SourceBranchName)
                 echo ${{ replace(variables['Build.SourceBranch'], '/', '_') }}
+                echo nnn${{ variable.testvar }}nnn
                 echo aaa${{ variables.branchNameToTileCase }}
                 echo End
           - task: DotNetCoreCLI@2
