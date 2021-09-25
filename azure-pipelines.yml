@@ -24,7 +24,6 @@ stages:
           - powershell: Write-Host "##vso[task.setvariable variable=branchNameToTileCase]testvalue"
             displayName: Set new variable value
           - powershell: Write-Host "aaa${{ variables.branchNameToTileCase }}111"
-          - powershell: aaa$( branchNameToTileCase )111
           - task: CmdLine@2
             inputs:
               script: |
