@@ -9,7 +9,8 @@ stages:
         pool: 
           name: Default
         variables:
-          branchNameToTileCase: 'wwwww'
+          - name: branchNameToTileCase
+            value: 'wwwww'
         steps:
           - script: |
               echo ${{ variables.one }} # outputs initialValue
