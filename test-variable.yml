@@ -1,10 +1,6 @@
 trigger:
 - '*'
 
-variables:
-- name: one
-  value: initialValue 
-
 stages:
   - stage: 'BuildSatge'
     displayName: 'Build Satge'
@@ -12,6 +8,9 @@ stages:
       - job: 'Build'
         pool: 
           name: Default
+        variables:
+        - name: one
+          value: initialValue 
         steps:
           - script: |
               echo ${{ variables.one }} # outputs initialValue
