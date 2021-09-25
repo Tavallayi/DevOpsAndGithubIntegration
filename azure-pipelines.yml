@@ -21,7 +21,7 @@ stages:
           - powershell: echo '##vso[task.setvariable variable=branchNameToTileCase]20'
           - powershell: |
             $branch = (Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''
-            Write-Host "##vso[task.setvariable variable=branchNameToTileCase]$branch
+            Write-Host "##vso[task.setvariable variable=branchNameToTileCase]$branch"
           - powershell: Write-Host "aaa${{ variables.branchNameToTileCase }}111"
           - task: CmdLine@2
             inputs:
