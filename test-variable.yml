@@ -5,14 +5,21 @@ variables:
 - name: one
   value: initialValue 
 
-steps:
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(one)
-    displayName: First variable pass
-  - powershell: Write-Host '##vso[task.setvariable variable=one]secondValue'
-    displayName: Set new variable value
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(one) # outputs secondValue
-    displayName: Second variable pass
+stages:
+  - stage: 'BuildSatge'
+    displayName: 'Build Satge'
+    jobs:
+      - job: 'Build'
+        pool: 
+          name: Default
+        steps:
+          - script: |
+              echo ${{ variables.one }} # outputs initialValue
+              echo $(one)
+            displayName: First variable pass
+          - powershell: Write-Host '##vso[task.setvariable variable=one]secondValue'
+            displayName: Set new variable value
+          - script: |
+              echo ${{ variables.one }} # outputs initialValue
+              echo $(one) # outputs secondValue
+            displayName: Second variable pass
