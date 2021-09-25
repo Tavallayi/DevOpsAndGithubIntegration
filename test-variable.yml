@@ -17,7 +17,7 @@ stages:
               echo ${{ variables.branchNameToTileCase }} # outputs initialValue
               echo $(branchNameToTileCase)
             displayName: First variable pass
-          - powershell: Write-Host '##vso[task.setvariable variable=one]secondValue'
+          - powershell: Write-Host '##vso[task.setvariable variable=branchNameToTileCase]secondValue'
             displayName: Set new variable value
           - script: |
               echo ${{ variables.one }} # outputs initialValue
