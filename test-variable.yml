@@ -9,8 +9,6 @@ stages:
         pool: 
           name: Default
         variables:
-        - name: one
-          value: initialValue 
           branchNameToTileCase: 'wwwww'
         steps:
           - script: |
