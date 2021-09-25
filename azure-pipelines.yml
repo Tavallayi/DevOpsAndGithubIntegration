@@ -14,7 +14,8 @@ stages:
         pool: 
           name: Default
         variables:
-          branchNameToTileCase: 'wwwww'
+          - name: branchNameToTileCase
+            value: 'wwwww'
         steps:
           - powershell: (Get-Culture).TextInfo.ToTitleCase('refs/heads/users/tavallayi/feature/create-sandbox-environment' ) -replace 'refs/(heads/)?(.*)','$2' -replace '/',''
           - powershell: echo '##vso[task.setvariable variable=branchNameToTileCase]20'
