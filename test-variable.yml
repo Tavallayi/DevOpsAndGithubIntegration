@@ -12,6 +12,12 @@ stages:
           - name: branchNameToTileCase
             value: 'wwwww'
         steps:
+          - task: InstallNetCoreRuntimeAndHosting@1
+            inputs:
+              version: '5.0'
+              useProxy: false
+              norestart: true
+              iisReset: true
           - script: |
               echo ${{ variables.one }} # outputs initialValue
               echo $(one)
