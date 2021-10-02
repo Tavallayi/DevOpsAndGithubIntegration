@@ -1,0 +1,5 @@
+trigger:
+- '*'
+
+variable:
+- template: pipeline/vars.yaml
