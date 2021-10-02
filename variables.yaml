@@ -3,3 +3,6 @@ trigger:
 
 variable:
 - template: pipeline/vars.yaml
+
+steps:
+- script: echo App name is ${{ variables.appName }}.
