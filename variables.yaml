@@ -1,7 +1,7 @@
 trigger:
 - '*'
 
-variable:
+variables:
 - template: pipeline/vars.yaml
 
 steps:
