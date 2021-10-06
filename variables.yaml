@@ -6,7 +6,7 @@ variables:
 
 steps:
 - script: echo App name is ${{ variables.appName }}.
-- script: echo App name is $(variables.appName).
+- script: echo App name is $(appName).
 - script: echo "##vso[task.setvariable variable=appName]Application2"
 - script: echo App name is ${{ variables.appName }}.
-- script: echo App name is $(variables.appName).
+- script: echo App name is $(appName).
